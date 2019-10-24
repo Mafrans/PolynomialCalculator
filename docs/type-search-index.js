@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"me.mafrans.polycalc","l":"Main"},{"p":"me.mafrans.polycalc","l":"Polynomial"},{"p":"me.mafrans.polycalc","l":"Solver"}]
