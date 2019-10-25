@@ -54,15 +54,39 @@ public class Polynomial {
     @Override
     public String toString() {
         StringBuilder bob = new StringBuilder();
-        for(int i = 0; i < grade; i++) {
-            bob.append(constants[i] != 1 ? constants[i] : "")
-                    .append(i != (grade - i) ? "x^" + (grade - i) : "x");
+        for(int g = grade; g > 0; g--) {
+            bob.append(constants[grade-g] != 1 ? constants[grade-g] : "")
+                    .append(g > 1 ? "x^" + g : "x");
 
-            if(i + 1 < grade) {
+            if(g > 1) {
                 bob.append(" + ");
             }
         }
+
+        if(constants[grade] != 0) {
+            bob.append(" + ").append(constants[grade]);
+        }
         return bob.toString() + " = 0";
+    }
+
+    /**
+     * Calculates the function f(x)
+     */
+    public double f(double x) {
+        double result = 0;
+        for(int g = grade; g > 0; g--) {
+            result += Math.pow(x, g) * constants[grade-g];
+            Main.log(", ", g, result);
+        }
+        return result;
+    }
+
+    public double deriv(double x) {
+        double result = 0;
+        for(int g = grade; g > 0; g--) {
+            result += g * Math.pow(x, g-1) * constants[grade-g];
+        }
+        return result;
     }
 
     /**
